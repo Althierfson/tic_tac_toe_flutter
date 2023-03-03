@@ -25,7 +25,7 @@ class GamePage extends StatelessWidget {
             height: 10,
           ),
           Obx(() => controller.estadoDoJogo.value == EstadoDoJogo.play
-              ? const Text("É sua vez")
+              ? Text('turn'.tr)
               : const SizedBox()),
           const SizedBox(
             height: 10,
@@ -38,9 +38,9 @@ class GamePage extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const Text(
-                      "Parabéns",
-                      style: TextStyle(
+                    Text(
+                      'parabens'.tr,
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 44,
                           fontWeight: FontWeight.bold),
@@ -55,17 +55,17 @@ class GamePage extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
-                      "Você destruiu seu oponente!",
-                      style: TextStyle(color: Colors.white, fontSize: 22),
+                    Text(
+                      'infoVitoria'.tr,
+                      style: const TextStyle(color: Colors.white, fontSize: 22),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
-                      "Não esqueça de entregar o lencinho para quando ele começar a chorar!",
-                      style: TextStyle(
+                    Text(
+                      'msgVitoria'.tr,
+                      style: const TextStyle(
                         color: Colors.white,
                       ),
                       textAlign: TextAlign.center,
@@ -76,7 +76,7 @@ class GamePage extends StatelessWidget {
                           onPressed: () {
                             controller.reiniciarJogo();
                           },
-                          child: const Text("Novo jogo")),
+                          child: Text('bt_home'.tr)),
                     )
                   ],
                 ),
@@ -86,17 +86,17 @@ class GamePage extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const Text(
-                      "Não há mais jogadas",
-                      style: TextStyle(
+                    Text(
+                      'infoEmpate'.tr,
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
-                    const Text(
-                      "O jogo terminou empatado",
-                      style: TextStyle(
+                    Text(
+                      'msgEmpate'.tr,
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.bold),
@@ -130,7 +130,7 @@ class GamePage extends StatelessWidget {
                           onPressed: () {
                             controller.reiniciarJogo();
                           },
-                          child: const Text("Novo jogo")),
+                          child: Text('bt_home'.tr)),
                     )
                   ],
                 ),
