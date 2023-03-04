@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:tic_tac_toe/shapes/shape_circulo.dart';
 import 'package:tic_tac_toe/shapes/shape_linha.dart';
 import 'package:tic_tac_toe/shapes/shape_x.dart';

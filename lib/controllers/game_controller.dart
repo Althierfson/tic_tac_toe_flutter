@@ -56,12 +56,12 @@ class GamePageController extends GetxController {
       estadoDoJogo.value = EstadoDoJogo.vitoria;
       return true;
     }
-    ;
+    
     if (checarFimDeJogo()) {
       estadoDoJogo.value = EstadoDoJogo.empate;
       return true;
     }
-    ;
+    
     return false;
   }
 
