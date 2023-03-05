@@ -1,3 +1,8 @@
+
 # Um simples jogo da velha
 
-Um simples jogo da velha feito em Flutter para você si divertir com seus amigos.
+Um simples app do famoso jogo da velha usando para você si divertir com seus amigos.
+
+## Tecnologias
+- Flutter
+- Getx
