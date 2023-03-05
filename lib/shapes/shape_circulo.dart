@@ -10,7 +10,9 @@ class ShapeCirculo extends CustomPainter {
 
     Offset center = Offset(size.width / 2, size.height / 2);
 
-    canvas.drawCircle(center, size.width / 2, paint);
+    canvas.drawOval(
+        Rect.fromCenter(center: center, width: size.width, height: size.height),
+        paint);
   }
 
   @override

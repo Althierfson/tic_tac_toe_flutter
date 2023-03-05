@@ -176,8 +176,8 @@ class GamePageController extends GetxController {
   }
 }
 
-class EstadoDoJogo {
-  static const int play = 1;
-  static const int empate = 2;
-  static const int vitoria = 3;
+enum EstadoDoJogo {
+  play,
+  empate,
+  vitoria,
 }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:tic_tac_toe/pages/game_page.dart';
 import 'package:tic_tac_toe/shapes/shape_circulo.dart';
 import 'package:tic_tac_toe/shapes/shape_x.dart';
+import 'package:tic_tac_toe/widgets/tic_tac_animated.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -29,29 +30,30 @@ class HomePage extends StatelessWidget {
                   fontSize: 44,
                   fontWeight: FontWeight.w900),
             ),
-            const SizedBox(
-              height: 10,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomPaint(
-                  painter: ShapeCirculo(),
-                  child: const SizedBox(
-                    width: 50,
-                    height: 50,
-                  ),
+                Stack(
+                  children: [
+                    const SizedBox(height: 100),
+                    TicTacAnimatedCircle(
+                      duration: const Duration(milliseconds: 1800),
+                      painter: ShapeCirculo(),
+                    )
+                  ],
                 ),
                 const SizedBox(
                   width: 20,
                 ),
-                CustomPaint(
-                  painter: ShapeX(),
-                  child: const SizedBox(
-                    width: 50,
-                    height: 50,
-                  ),
-                )
+                Stack(
+                  children: [
+                    const SizedBox(height: 100),
+                    TicTacAnimatedCircle(
+                      duration: const Duration(milliseconds: 1500),
+                      painter: ShapeX(),
+                    )
+                  ],
+                ),
               ],
             ),
             const SizedBox(
