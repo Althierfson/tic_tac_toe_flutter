@@ -4,6 +4,7 @@ import 'package:tic_tac_toe/controllers/game_controller.dart';
 import 'package:tic_tac_toe/shapes/shape_circulo.dart';
 import 'package:tic_tac_toe/shapes/shape_x.dart';
 import 'package:tic_tac_toe/widgets/campo_widget.dart';
+import 'package:tic_tac_toe/widgets/tic_tac_animated.dart';
 
 class GamePage extends StatelessWidget {
   GamePage({super.key});
@@ -16,9 +17,14 @@ class GamePage extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Obx(() => controller.estadoDoJogo.value == EstadoDoJogo.play
-              ? CustomPaint(
-                  size: const Size.square(50),
-                  painter: controller.vez.value ? ShapeX() : ShapeCirculo(),
+              ? Stack(
+                  children: [
+                    const SizedBox(height: 100),
+                    TicTacAnimated(
+                      duration: const Duration(milliseconds: 1800),
+                      painter: controller.vez.value ? ShapeX() : ShapeCirculo(),
+                    )
+                  ],
                 )
               : const SizedBox()),
           const SizedBox(
@@ -48,9 +54,17 @@ class GamePage extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    CustomPaint(
-                      size: const Size.square(50),
-                      painter: controller.vez.value ? ShapeX() : ShapeCirculo(),
+                    Stack(
+                      children: [
+                        const SizedBox(
+                          height: 100,
+                        ),
+                        TicTacAnimated(
+                            duration: const Duration(milliseconds: 1500),
+                            painter: controller.vez.value
+                                ? ShapeX()
+                                : ShapeCirculo()),
+                      ],
                     ),
                     const SizedBox(
                       height: 10,
@@ -108,16 +122,26 @@ class GamePage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CustomPaint(
-                          size: const Size.square(50),
-                          painter: ShapeX(),
+                        Stack(
+                          children: [
+                            const SizedBox(height: 100),
+                            TicTacAnimated(
+                              duration: const Duration(milliseconds: 1800),
+                              painter: ShapeCirculo(),
+                            )
+                          ],
                         ),
                         const SizedBox(
-                          width: 10,
+                          width: 20,
                         ),
-                        CustomPaint(
-                          size: const Size.square(50),
-                          painter: ShapeCirculo(),
+                        Stack(
+                          children: [
+                            const SizedBox(height: 100),
+                            TicTacAnimated(
+                              duration: const Duration(milliseconds: 1500),
+                              painter: ShapeX(),
+                            )
+                          ],
                         ),
                       ],
                     ),

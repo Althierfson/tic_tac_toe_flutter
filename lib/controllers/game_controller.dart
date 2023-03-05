@@ -45,58 +45,35 @@ class GamePageController extends GetxController {
 
     tabuleiro[coluna][linha] = vez.value ? 1 : -1;
 
-    if (!checarEstadoDoJogo()) {
-      vez.value = !vez.value;
-      tabuleiro.refresh();
-    }
+    checarEstadoDoJogo();
   }
 
-  bool checarEstadoDoJogo() {
+  void checarEstadoDoJogo() {
     if (checarVitoria()) {
       estadoDoJogo.value = EstadoDoJogo.vitoria;
-      return true;
+      return;
     }
-    
-    if (checarFimDeJogo()) {
+
+    if (checarEmpate()) {
       estadoDoJogo.value = EstadoDoJogo.empate;
-      return true;
+      return;
     }
-    
-    return false;
+
+    vez.value = !vez.value;
+    tabuleiro.refresh();
   }
 
-  bool checarFimDeJogo() {
+  bool checarEmpate() {
     int count = 0;
-
-    /// Checar jogadas em linhas
-    for (int i = 0; i < tabSize; i++) {
-      if (checarJogadasPossiveis(
-          tabuleiro[i][0], tabuleiro[i][1], tabuleiro[i][2])) {
-        count++;
+    for (int i = 0; i < tabuleiro.length; i++) {
+      for (int j = 0; j < tabuleiro[i].length; j++) {
+        if (tabuleiro[i][j] == 0) {
+          count++;
+        }
       }
     }
-
-    /// Checar jogadas em colunas
-    for (int i = 0; i < tabSize; i++) {
-      if (checarJogadasPossiveis(
-          tabuleiro[0][i], tabuleiro[1][i], tabuleiro[2][i])) {
-        count++;
-      }
-    }
-
-    /// Checar jogadas na diagonal esquerda-direita
-    if (checarJogadasPossiveis(
-        tabuleiro[0][0], tabuleiro[1][1], tabuleiro[2][2])) {
-      count++;
-    }
-
-    /// Checar jogadas em diagonal direita-esquerda
-    if (checarJogadasPossiveis(
-        tabuleiro[0][2], tabuleiro[1][1], tabuleiro[2][0])) {
-      count++;
-    }
-
-    if (count == 8) {
+   
+    if (count <= 0) {
       return true;
     } else {
       return false;
@@ -145,34 +122,6 @@ class GamePageController extends GetxController {
     } else {
       return false;
     }
-  }
-
-  bool checarJogadasPossiveis(int n1, int n2, int n3) {
-    int numeroDeZeros = 0;
-    int numeroDeUns = 0;
-    int numeroDeUnsNegativos = 0;
-    List<int> lista = [n1, n2, n3];
-    for (var n in lista) {
-      if (n == 0) {
-        numeroDeZeros++;
-      }
-      if (n == 1) {
-        numeroDeUns++;
-      }
-      if (n == -1) {
-        numeroDeUnsNegativos++;
-      }
-    }
-
-    if (numeroDeUns == 2 && numeroDeUnsNegativos == 2) {
-      return false;
-    }
-
-    if (numeroDeZeros > 1) {
-      return false;
-    }
-
-    return true;
   }
 }
 

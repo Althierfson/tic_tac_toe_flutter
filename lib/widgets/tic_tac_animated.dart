@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class TicTacAnimatedCircle extends StatefulWidget {
+class TicTacAnimated extends StatefulWidget {
   final Duration duration;
   final CustomPainter painter;
-  const TicTacAnimatedCircle({super.key, required this.duration, required this.painter});
+  const TicTacAnimated(
+      {super.key, required this.duration, required this.painter});
 
   @override
-  State<TicTacAnimatedCircle> createState() => _TicTacAnimatedCircleState();
+  State<TicTacAnimated> createState() => _TicTacAnimatedState();
 }
 
-class _TicTacAnimatedCircleState extends State<TicTacAnimatedCircle>
+class _TicTacAnimatedState extends State<TicTacAnimated>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> positionAnimation;
@@ -34,6 +35,13 @@ class _TicTacAnimatedCircleState extends State<TicTacAnimatedCircle>
         controller.repeat();
       }
     });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+    
   }
 
   @override

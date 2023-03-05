@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                 Stack(
                   children: [
                     const SizedBox(height: 100),
-                    TicTacAnimatedCircle(
+                    TicTacAnimated(
                       duration: const Duration(milliseconds: 1800),
                       painter: ShapeCirculo(),
                     )
@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                 Stack(
                   children: [
                     const SizedBox(height: 100),
-                    TicTacAnimatedCircle(
+                    TicTacAnimated(
                       duration: const Duration(milliseconds: 1500),
                       painter: ShapeX(),
                     )
