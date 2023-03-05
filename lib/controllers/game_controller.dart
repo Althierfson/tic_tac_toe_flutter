@@ -72,7 +72,7 @@ class GamePageController extends GetxController {
         }
       }
     }
-   
+
     if (count <= 0) {
       return true;
     } else {

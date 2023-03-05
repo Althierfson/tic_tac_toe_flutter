@@ -6,4 +6,13 @@ ThemeData themeData = ThemeData(
         style: ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(Colors.grey),
             textStyle:
-                MaterialStatePropertyAll(TextStyle(color: Colors.black  )))));
+                MaterialStatePropertyAll(TextStyle(color: Colors.black)))),
+    textTheme: const TextTheme(
+        bodyLarge: TextStyle(
+          fontSize: 20,
+          color: Colors.white,
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 16,
+          color: Colors.white,
+        )));

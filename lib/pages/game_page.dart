@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tic_tac_toe/controllers/game_controller.dart';
+import 'package:tic_tac_toe/pages/home_page.dart';
 import 'package:tic_tac_toe/shapes/shape_circulo.dart';
 import 'package:tic_tac_toe/shapes/shape_x.dart';
 import 'package:tic_tac_toe/widgets/campo_widget.dart';
@@ -84,14 +85,7 @@ class GamePage extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            controller.reiniciarJogo();
-                          },
-                          child: Text('bt_home'.tr)),
-                    )
+                    buildfinalOpcoes()
                   ],
                 ),
               );
@@ -148,14 +142,7 @@ class GamePage extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            controller.reiniciarJogo();
-                          },
-                          child: Text('bt_home'.tr)),
-                    )
+                    buildfinalOpcoes()
                   ],
                 ),
               );
@@ -166,14 +153,38 @@ class GamePage extends StatelessWidget {
     );
   }
 
+  Widget buildfinalOpcoes() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+            onPressed: () {
+              controller.reiniciarJogo();
+            },
+            child: Text('bt_home'.tr)),
+        const SizedBox(
+          width: 10,
+        ),
+        ElevatedButton(
+            onPressed: () {
+              Get.offAll(
+                () => const HomePage(),
+              );
+            },
+            child: Text('bt_backHome'.tr))
+      ],
+    );
+  }
+
   Widget buildTabulerio(BuildContext context) {
-    double size = (MediaQuery.of(context).size.width / 3) - 10;
+    double size =
+        (MediaQuery.of(context).size.width / controller.tabuleiro.length) - 10;
     return Column(
         children: List.generate(controller.tabuleiro.length, (linhaIndex) {
       var linha = controller.tabuleiro[linhaIndex];
       return Padding(
-        padding: const EdgeInsets.only(
-          bottom: 10 / 3,
+        padding: EdgeInsets.only(
+          bottom: 10 / controller.tabuleiro.length,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
